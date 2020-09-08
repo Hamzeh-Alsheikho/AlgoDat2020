@@ -1,9 +1,13 @@
+import java.lang.reflect.Array;
+import java.util.*;
+
 public class UkeOppgave1 {
    public static void main(String[] args) {
         int[]a ={8,4,17,10,6,20,1,11,15,3,18,9,2,7,19};
         int min_index = min(a);
         int max_index = max(a);
         int[] minimaks = minimaks(a);
+        int min2 = min2(a);
         for (int i = 0; i < minimaks.length; i++){
             System.out.println("Det nye arryet b er "+minimaks[i]);}
         System.out.println(fak(10));
@@ -11,7 +15,9 @@ public class UkeOppgave1 {
         System.out.println("Den minste vardien er "+a[min_index]+"\n");
         System.out.println("Posjoenen til den største vardien er "+max_index);
         System.out.println("Den største vardien er "+a[max_index]);
-
+       System.out.println(" Min to er "+min2);
+        Tabell tabell = new Tabell();
+       System.out.println(Arrays.toString(a));
    }
    // Fin den miste verdien og posisjonen
     static int min(int[]a){
@@ -88,4 +94,29 @@ public class UkeOppgave1 {
         for (int i = 2; i <= n; i++) fak *= i;
         return fak;
     }
+
+
+    // uke 2
+
+    public static int min2(int[] a, int fra, int til)
+    {
+        if (fra < 0 || til > a.length || fra >= til)
+            throw new IllegalArgumentException("Illegalt intervall!");
+
+        int m = fra;// indeks til minste verdi i a[fra:til>
+        int minverdi = a[fra];   // minste verdi i a[fra:til>
+
+        for (int i = fra + 1; i < til; i++)
+            if (a[i] < minverdi) {
+            m = i;               // indeks til minste verdi oppdateres
+            minverdi = a[m];     // minste verdi oppdateres
+        }
+
+        return m;  // posisjonen til minste verdi i a[fra:til>
+    }
+    public static int min2(int[] a)  // bruker hele tabellen
+    {
+        return min2(a,0,a.length);     // kaller metoden over
+    }
+
 }
