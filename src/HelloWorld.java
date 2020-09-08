@@ -15,6 +15,11 @@ public class HelloWorld {
             System.out.println(i);
             //System.out.println("Count to 30");
         }
+        int j=30;
+        while (j<50){
+            j++;
+            System.out.print(" "+j);
+        }
 
 
         String a = merge("ABC","DEFGH");
